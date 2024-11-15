@@ -26,7 +26,7 @@ const AllImage = () => {
         
       {data.map((item) => (
         <Link to={`/images/${item.id}`} key={item.id}>
-          <Image key={item.id} title={item.title} img={item.url} />
+          <Image key={item.id} title={item.title} img={item.url} id={item.id} />
         </Link>
         ))}
       </div>
