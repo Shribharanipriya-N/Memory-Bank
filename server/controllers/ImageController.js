@@ -4,6 +4,7 @@ const ImageModel = require('../models/ImageModel');
 const add = async (req, res) => {
     try {
         const data = req.body;
+        console.log(data);
         const newimage = new ImageModel({
             title: data.title,
             description: data.description,
@@ -31,8 +32,9 @@ const getimage = async (req, res) => {
     const id = req.params.id;
     try {
         const image = await ImageModel.findOne({ id: id });
-        if (image)
-            res.json({ data: image, status: 200 });
+        if (image){
+                    return res.json(image).status(200) ;
+        }
         else
             res.json({ message: "Image not found", status: 401 });
     } catch (e) {

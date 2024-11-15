@@ -2,7 +2,7 @@ const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
 const bodyparser=require('body-parser');
-
+const ImageRoute =require('./routers/ImageRoutes')
 const app=express();
 app.use(bodyparser.json());
 app.use(cors());
@@ -17,6 +17,7 @@ async function connectdb(){
 }
 }
 connectdb();
+app.use("/",ImageRoute)
 const x=process.env.PORT || 5000;
 app.listen(x,()=>{
     console.log(`Port Starting at ${x}`);
