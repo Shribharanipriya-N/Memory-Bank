@@ -1,6 +1,7 @@
 import React from "react";
 import backgroundImage from "../images/bg4.jpg";
 import image from"../images/img.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -23,9 +24,11 @@ const Home = () => {
         </div>
       </div>
       <div className="flex justify-center">
+        <Link to='/images'>
       <button className="text-gray-800 w-[210px] h-[70px] border-2 border-gray-500 rounded-lg font-sans text-xl font-normal bg-slate-100 hover:bg-gray-200">
   Let's Save Memories
 </button>
+</Link>
 
       </div>
     </div>

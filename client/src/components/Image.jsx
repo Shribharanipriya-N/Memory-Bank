@@ -5,6 +5,7 @@ const Image = (props) => {
   const img = props.img;
 
   return (
+    
     <div className="relative h-[350px] w-[430px] border-gray-500 shadow-lg mt-2 mb-2 rounded-xl ">
       <div
         className="absolute inset-0 bg-cover bg-center  rounded-xl"
@@ -14,6 +15,7 @@ const Image = (props) => {
         <h3 className="text-xl font-sans font-medium text-white">{title}</h3>
       </div>
     </div>
+    // </Link>
   );
 };
 

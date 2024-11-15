@@ -1,25 +1,24 @@
-import React from 'react'
-import Home from './components/Home'
-import NavBar from './components/NavBar'
-import AllImage from './components/AllImage'
-import ImageDetails from './components/ImageDetails'
-import AddImage from './components/AddImage'
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Layout from './components/Layout';
+import AllImage from './components/AllImage';
+import ImageDetails from './components/ImageDetails';
+import AddImage from './components/AddImage';
 
 const App = () => {
   return (
-    <div className='min-h-screen flex flex-col '>
-      {/* <Home/> */}
-      <div className='sticky top-0 z-50'>
-      <NavBar/>
-      </div>
-      <div className='z-10 flex flex-grow '>
-      {/* <AllImage/> */}
-      <ImageDetails/>
-      {/* <AddImage/> */}
-      </div>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="images" element={<AllImage />} />
+          <Route path="images/:id" element={<ImageDetails />} />
+          <Route path="upload" element={<AddImage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
-
+export default App;
