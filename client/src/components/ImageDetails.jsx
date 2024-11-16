@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const ImageDetails = () => {
+  const navigate=useNavigate();
   const { id } = useParams()
   const [data, setData] = useState("");
 
@@ -19,6 +22,22 @@ const ImageDetails = () => {
 
     fetchData();
   }, [id]);
+
+  const handleEdit=async(e)=>{
+    navigate(`/update/${id}`);
+  }
+  const handleDelete =async(e)=>{
+try{
+  const response= await axios.delete(`http://localhost:5000/images/${id}`);
+  console.log(response);
+  navigate("/images");
+}
+catch(e){
+  console.log(e);
+}
+    
+   }
+
   if (!data) {
     return <div className="flex justify-center items-center">Loading...</div>;
   }
@@ -39,13 +58,15 @@ const ImageDetails = () => {
         <h1 className="text-4xl text-gray-700 font-semibold ml-5 pl-5 ">
           Description
         </h1>
-        <span className="flex flex-wrap leading-loose overflow-auto max-h-[200px]  font-medium  ml-5 pl-5 pr-10 text-gray-700 ">
+        <span className="flex flex-wrap leading-loose  max-h-[200px]  font-medium  ml-5 pl-5 pr-10 text-gray-700 ">
           {data.description}
         </span>
-        <div className="flex justify-center mt-5">
+        <div className="flex justify-center mt-5 gap-5">
           <button className=" w-[200px] font-semibold text-xl px-8 py-2 text-white rounded-md bg-gray-700 hover:border hover:rounded hover:border-gray-400 hover:bg-gray-600">
             Download
           </button>
+        <MdDelete size={35}  onClick={handleDelete}/>
+        <FaEdit size={35} onClick={handleEdit}/>
         </div>
       </div>
     </div>

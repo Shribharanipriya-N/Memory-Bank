@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import AllImage from './components/AllImage';
 import ImageDetails from './components/ImageDetails';
 import AddImage from './components/AddImage';
+import UpdateImage from './components/UpdateImage';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="images" element={<AllImage />} />
           <Route path="images/:id" element={<ImageDetails />} />
           <Route path="upload" element={<AddImage />} />
+          <Route path="update/:id" element={<UpdateImage/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
