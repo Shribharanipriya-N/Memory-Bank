@@ -6,5 +6,5 @@ Router.post("/images", ImageController.add);
 Router.get("/images", ImageController.getimages);
 Router.get("/images/:id", ImageController.getimage);
 Router.delete("/images/:id", ImageController.deleteimage);
-
+Router.put("/images/:id",ImageController.updateimage);
 module.exports = Router;

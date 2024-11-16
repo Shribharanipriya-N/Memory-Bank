@@ -55,4 +55,25 @@ const deleteimage = async (req, res) => {
         res.json({ message: "Can't delete the image", status: 500 });
     }
 }
-module.exports = { add, getimages, getimage, deleteimage };
+
+const updateimage=async(req,res)=>{
+    const id=req.params.id;
+    const data=req.body;
+    console.log(data,id);
+    try{
+        const image=await ImageModel.findOne({id});
+        if(image){
+            image.title=data.title;
+            image.description=data.description;
+            await image.save();
+            return res.json({message:"Updated"}).status(200);
+        }
+        else{
+            return res.json({message:"Image not found"}).status(404);
+        }
+    }
+    catch(e){
+        return console.log(e);
+    }
+}
+module.exports = { add, getimages, getimage, deleteimage ,updateimage};
