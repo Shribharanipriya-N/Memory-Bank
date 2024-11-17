@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import img from "../images/img2.png";
 import { storage } from "../firebase";
 import { v4 as uuid } from "uuid";
+
+
 import {
   getDownloadURL,
   ref as storageRef,
@@ -35,7 +37,7 @@ const AddImage = () => {
         return alert("Fill in all details.");
       }
 
-      await axios.post("http://localhost:5000/images", {
+      await axios.post(`${import.meta.env.VITE_SERVER_URL}/images`, {
         title,
         description,
         url: downloadUrl,

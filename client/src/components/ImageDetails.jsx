@@ -13,7 +13,7 @@ const ImageDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/images/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/images/${id}`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -29,7 +29,7 @@ const ImageDetails = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/images/${id}`);
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/images/${id}`);
       navigate("/images");
     } catch (error) {
       console.log(error);

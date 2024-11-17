@@ -12,7 +12,7 @@ const UpdateImage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/images/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/images/${id}`);
         setTitle(response.data.title);
         setDescription(response.data.description);
         setImg(response.data.url);
@@ -29,7 +29,7 @@ const UpdateImage = () => {
       return alert("Please fill all details");
     }
     try {
-      await axios.put(`http://localhost:5000/images/${id}`, { title, description });
+      await axios.put(`${import.meta.env.VITE_SERVER_URL}/images/${id}`, { title, description });
       navigate("/images");
     } catch (error) {
       console.error("Error updating image:", error);
