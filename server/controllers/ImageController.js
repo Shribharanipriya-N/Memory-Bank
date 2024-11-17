@@ -4,7 +4,6 @@ const ImageModel = require('../models/ImageModel');
 const add = async (req, res) => {
     try {
         const data = req.body;
-        console.log(data);
         const newimage = new ImageModel({
             title: data.title,
             description: data.description,
@@ -59,7 +58,6 @@ const deleteimage = async (req, res) => {
 const updateimage=async(req,res)=>{
     const id=req.params.id;
     const data=req.body;
-    console.log(data,id);
     try{
         const image=await ImageModel.findOne({id});
         if(image){

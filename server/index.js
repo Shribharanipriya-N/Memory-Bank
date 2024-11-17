@@ -4,12 +4,14 @@ const cors=require('cors');
 const bodyparser=require('body-parser');
 const ImageRoute =require('./routers/ImageRoutes')
 const app=express();
+require('dotenv').config();
+
 app.use(bodyparser.json());
 app.use(cors());
 
 async function connectdb(){
     try{
-    await mongoose.connect("mongodb+srv://user:user@cluster0.nkcokgg.mongodb.net/MemoryBank?retryWrites=true&w=majority&appName=Cluster0")
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("db connnection success")
  }
  catch(err){
@@ -18,8 +20,8 @@ async function connectdb(){
 }
 connectdb();
 app.use("/",ImageRoute)
-const x=process.env.PORT || 5000;
+const x= 5000||process.env.PORT;
 app.listen(x,()=>{
-    console.log(`Port Starting at ${x}`);
+    console.log(`Server started`);
 })
 module.exports=app;
